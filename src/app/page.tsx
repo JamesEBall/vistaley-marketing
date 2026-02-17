@@ -93,7 +93,7 @@ function Hero() {
             { value: "12", label: "jurisdictions" },
             { value: "20+", label: "currencies" },
             { value: "$0", label: "to start" },
-            { value: "710+", label: "automated tests" },
+            { value: "2", label: "platforms" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl font-bold text-white sm:text-3xl">

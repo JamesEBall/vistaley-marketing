@@ -413,8 +413,8 @@ function TechStack() {
             Built with modern infrastructure
           </h2>
           <p className="mt-4 text-lg text-white/40">
-            Enterprise-grade technology stack. 710+ automated tests. 94.2%
-            code coverage.
+            Enterprise-grade technology stack built for reliability and
+            security.
           </p>
         </div>
 
