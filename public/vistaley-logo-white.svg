@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <!-- Monochrome white version for dark backgrounds -->
+
+  <!-- VentureLens icon -->
+  <g transform="translate(0, 0)">
+    <rect width="80" height="80" rx="16" fill="white" opacity="0.12"/>
+    <polygon points="40,20 32,8 48,8" fill="white" opacity="0.45"/>
+    <polygon points="40,21.5 20,14 32,20" fill="white" opacity="0.25"/>
+    <polygon points="40,21.5 60,14 48,20" fill="white" opacity="0.25"/>
+    <path d="M36,24 Q40,19 44,24" fill="white"/>
+    <rect x="34" y="24" width="12" height="5.5" rx="1" fill="white"/>
+    <rect x="36" y="25" width="8" height="3.8" rx="0.8" fill="white" opacity="0.5"/>
+    <path d="M35.2,29.5 L33.3,63 L46.7,63 L44.8,29.5 Z" fill="white"/>
+    <rect x="34.8" y="37.5" width="10.4" height="3.4" rx="0.5" fill="white" opacity="0.3"/>
+    <rect x="34.2" y="49.2" width="11.6" height="3.4" rx="0.5" fill="white" opacity="0.3"/>
+    <rect x="30" y="63" width="20" height="4.4" rx="1.2" fill="white"/>
+    <ellipse cx="40" cy="70" rx="17" ry="3.4" fill="white" opacity="0.15"/>
+  </g>
+
+  <!-- Plus symbol -->
+  <g transform="translate(100, 24)">
+    <rect x="12" y="0" width="8" height="32" rx="4" fill="white" opacity="0.5"/>
+    <rect x="0" y="12" width="32" height="8" rx="4" fill="white" opacity="0.5"/>
+  </g>
+
+  <!-- Harbour icon -->
+  <g transform="translate(200, 0)">
+    <rect width="80" height="80" rx="16" fill="white" opacity="0.12"/>
+    <path d="M40,12 L40,53 L17,53 Z" fill="white" opacity="0.9"/>
+    <path d="M40,15 L40,53 L60,53 Z" fill="white" opacity="0.65"/>
+    <path d="M10,57 L17,53 L63,53 L70,57 L66,62 L14,62 Z" fill="white"/>
+    <path d="M8,67 Q16,64.5 40,67 Q64,64.5 72,67" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+  </g>
+</svg>
