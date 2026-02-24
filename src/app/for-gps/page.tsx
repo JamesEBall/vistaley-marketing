@@ -480,6 +480,57 @@ export default function ForGPsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Is VentureLens free?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. VentureLens has a free Starter tier for solo GPs managing one fund with up to 10 portfolio companies and 5 LPs. No credit card required.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What currencies does VentureLens support?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "VentureLens supports 20+ currencies natively, including USD, SGD, VND, PKR, BDT, KZT, LKR, NPR, PHP, KHR, MMK, UZS, KGS, and TJS. Multi-currency NAV calculations are built into the core platform.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which emerging markets does VentureLens support?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "VentureLens includes compliance frameworks for 12 jurisdictions: Vietnam, Pakistan, Bangladesh, Kazakhstan, Sri Lanka, Nepal, Philippines, Cambodia, Myanmar, Uzbekistan, Kyrgyzstan, and Tajikistan.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How is VentureLens different from Carta?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "VentureLens is purpose-built for emerging market funds with native multi-currency support, jurisdiction-specific compliance, and a free tier. Carta is US-focused with enterprise pricing starting at ~$10K/year. VentureLens also gives portfolio companies free access to Harbour for FP&A.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do my portfolio companies get free tools?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. When you use VentureLens, your portfolio companies get free access to Harbour — a full FP&A platform for tracking finances, budgets, and investor updates. Harbour is free forever.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
       <Hero />
       <ProblemSolution />
       <Features />

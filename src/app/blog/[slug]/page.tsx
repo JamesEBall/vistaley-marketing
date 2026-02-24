@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, User, Tag } from "lucide-react";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
@@ -48,6 +48,12 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const allPosts = getAllPosts();
+  const relatedPosts = allPosts
+    .filter((p) => p.slug !== post.slug)
+    .filter((p) => p.tags.some((t) => post.tags.includes(t)))
+    .slice(0, 3);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -67,11 +73,40 @@ export default async function BlogPostPage({
     mainEntityOfPage: `https://vistaley.com/blog/${post.slug}`,
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://vistaley.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://vistaley.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://vistaley.com/blog/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <article className="relative pt-16">
@@ -80,9 +115,18 @@ export default async function BlogPostPage({
         </div>
 
         <div className="relative mx-auto max-w-3xl px-6 pb-24 pt-24 sm:pt-32 lg:px-8">
+          {/* Breadcrumb nav */}
+          <nav className="flex items-center gap-1.5 text-xs text-white/30">
+            <Link href="/" className="hover:text-white/50 transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/blog" className="hover:text-white/50 transition-colors">Blog</Link>
+            <span>/</span>
+            <span className="text-white/50 truncate max-w-[200px]">{post.title}</span>
+          </nav>
+
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-white/60"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-white/60"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to blog
@@ -134,6 +178,7 @@ export default async function BlogPostPage({
 
           <hr className="my-12 border-white/[0.06]" />
 
+          {/* CTA */}
           <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-8 text-center">
             <h3 className="text-xl font-bold text-white">
               Ready to modernize your fund operations?
@@ -156,6 +201,36 @@ export default async function BlogPostPage({
               </Link>
             </div>
           </div>
+
+          {/* Related posts */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-16">
+              <h3 className="text-lg font-semibold text-white/80">Related posts</h3>
+              <div className="mt-4 space-y-3">
+                {relatedPosts.map((related) => (
+                  <Link
+                    key={related.slug}
+                    href={`/blog/${related.slug}`}
+                    className="group flex items-center justify-between rounded-lg border border-white/[0.06] bg-white/[0.02] p-4 transition-all hover:border-white/[0.1] hover:bg-white/[0.04]"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-sm font-medium text-white/70 group-hover:text-white transition-colors truncate">
+                        {related.title}
+                      </h4>
+                      <p className="mt-0.5 text-xs text-white/30">
+                        {new Date(related.date).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
+                    </div>
+                    <ArrowRight className="ml-3 h-4 w-4 shrink-0 text-white/20 group-hover:text-emerald-400 transition-colors" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </article>
     </>

@@ -563,6 +563,57 @@ export default function ForFoundersPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Is Harbour really free?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Harbour is free forever — no trial period, no feature gates, no credit card required. We make money from VentureLens (our GP tool), not from charging startups.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What can I do with Harbour?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Harbour provides a financial dashboard (revenue, burn, runway), budget planning with scenario modeling, one-click investor updates, KPI tracking, and secure sharing controls — all free.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do I need to be VC-backed to use Harbour?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "No. Any startup can use Harbour for free. It works great for bootstrapped companies, pre-seed startups, and companies with angel investors — not just VC-backed companies.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How does Harbour connect with my investors?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "If your fund manager uses VentureLens, your Harbour data can flow directly to their dashboard (with your permission). You control exactly what each investor sees through granular sharing controls.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Why is Harbour free when competitors charge $200+/month?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Harbour is part of the Vistaley ecosystem. When founders use Harbour, their data can flow to fund managers on VentureLens — making VentureLens more valuable. Better data from portfolio companies means better fund management for GPs.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
       <Hero />
       <ThreeSteps />
       <ForFounders />
