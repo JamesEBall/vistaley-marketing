@@ -540,8 +540,29 @@ function FinalCTA() {
 }
 
 export default function ForFoundersPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Harbour",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    url: "https://vistaley.com/for-founders",
+    description:
+      "Free financial planning and analysis platform for startups — track finances, plan budgets, and share updates with investors.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      description: "Free forever for portfolio companies",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
       <ThreeSteps />
       <ForFounders />

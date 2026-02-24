@@ -771,8 +771,26 @@ function FinalCTA() {
 
 /* ─────────── Page ─────────── */
 export default function HomePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Vistaley",
+    url: "https://vistaley.com",
+    description:
+      "The two-sided platform connecting fund managers and portfolio companies. VentureLens for GPs. Harbour for founders.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://vistaley.com/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
       <TwoSides />
       <HowItWorks />

@@ -457,8 +457,29 @@ function FinalCTA() {
 }
 
 export default function ForGPsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "VentureLens",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    url: "https://vistaley.com/for-gps",
+    description:
+      "Professional fund management platform for emerging market venture capital — deal pipeline, portfolio monitoring, LP portal, and fund accounting.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      description: "Free tier available for solo GPs",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
       <ProblemSolution />
       <Features />

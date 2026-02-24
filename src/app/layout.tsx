@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   description:
     "The two-sided platform connecting fund managers and portfolio companies. VentureLens for GPs. Harbour for founders. Built for emerging markets.",
   metadataBase: new URL("https://vistaley.com"),
+  alternates: {
+    canonical: "https://vistaley.com",
+    types: { "application/rss+xml": "/feed.xml" },
+  },
   openGraph: {
     title: "Vistaley — Fund Management & Portfolio Intelligence",
     description:
@@ -63,6 +67,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Vistaley",
+              url: "https://vistaley.com",
+              description:
+                "Fund management and portfolio intelligence platform for emerging market venture capital ecosystems.",
+              sameAs: [
+                "https://github.com/JamesEBall",
+                "https://linkedin.com/company/vistaley",
+              ],
+            }),
+          }}
+        />
         <Navbar />
         <main>{children}</main>
         <Footer />
